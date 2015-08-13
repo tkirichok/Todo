@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo</title>
+    <script type = "text/javascript" src = "Todo.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src = "underscore.js"></script>
+    <script src = "backbone.js"></script>
+    <script src = "handlebars-v3.0.3.js"></script>
+
+<script id = 'taskInfoTemplate' type = "template"></script>
+
+    <style type="text/css">
+        body {
+            font-family: Arial, Helvetica, sans-serif; /* Рубленый шрифт текста */
+            margin: 0; /* Обнуляем отступы браузера */
+        }
+        ul{
+            margin-left: 0;
+            padding-left: 0;
+            list-style-type: none;
+        }
+        .task-list-item{
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+/*
+        .chkbox{
+            margin:0;
+        }
+*/
+        .left-column{
+         /* Левая колонка */
+            float: left; /* Обтекание справа */
+            /*border: 1px solid #333; /* Параметры рамки вокруг */
+            width: 250px; /* Ширина колонки */
+            padding: 5px; /* Поля вокруг текста */
+            margin: 0;
+            padding-top: 0;/*10px 10px 20px 5px; /* Значения отступов */
+        }
+        .right-column{
+            text-align: right;
+            display: block;
+            margin: 25px 5px 20px 275px; /* Значения отступов */
+            /*padding: 5px; /* Поля вокруг текста */
+            width: 300px;
+          /*  height: 400px;
+            border: 1px solid #333; /* Параметры рамки */
+        }
+        .right-column1{
+            border: 1px solid #333;
+            margin: 0;
+            height: 200px;
+        }
+        .remove{
+            float: right;
+        }
+        #btnAdd{
+            width: 250px;
+            font-family: Arial, Helvetica, sans-serif; /* Рубленый шрифт текста */
+            font-size: 1em;
+        }
+        #btnOk,#btnCancel{
+            width: 25%;
+            margin-top: 0.6px;
+            margin-left: 0.6px;
+        }
+        #taskName, #containerTask{
+            display: block;
+            border-style: none;
+            background:lightcyan;
+            font-size: 1em;
+            padding: 15px;
+            -moz-box-sizing: border-box; /* в Firefox нужен префикс */
+            box-sizing: border-box;
+            width: 100%;
+        }
+        #containerTask{
+            height: 74%;
+            resize: none;
+        }
+
+/*
+        body.spinn{
+            position: fixed;
+
+            width: 100%;
+            height: 100%;
+            /!*opacity:0.6;*!/
+            opacity: 0.4;
+            /!*filter: alpha(opacity=40);*!/
+
+        }
+*/
+        .spinn{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 40px;
+            height: 40px;
+            margin-top: -20 px;
+            margin-left: -20px;
+            border-radius: 10em;
+            border: 7px solid transparent;
+            border-top-color: #000000;
+            border-right-color: #000000;
+            animation: spin 1s linear infinite;
+            visibility: hidden;
+        /     }
+        @keyframes spin{
+            0%{
+                transform: rotate(0deg);
+            }
+
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+
+    </style>
+</head>
+<body>
+<!--<div class = "transboxx">-->
+    <canvas class = "spinn">Этот текст отобразится если браузер не поддерживает html5 элемент canvas.</canvas>
+<div class = 'left-column'>
+    <button id = "btnAdd">Додати нотатку</button>
+    <ul id = "todoList"  style = "cursor: pointer"></ul>
+</div>
+<div class = 'right-column'>
+</div>
+<!--</div>-->
+
+<!--
+<ul id = "todoList"  style = "width: 200px; float: left; cursor: pointer"></ul>
+<div id = "containerTask" style = "margin-left: 225px;margin-top: 10px"></div>
+-->
+<!--
+<script type = "text/javascript">
+    window.onhashChange = function(){
+        var hsh = + location.hash.substring(2);
+        var task = state.taskList.filter(function(item){
+            return item.id = hsh;
+        })[0];
+        openTask(task);
+
+</script>
+-->
+</body>
+</html>
